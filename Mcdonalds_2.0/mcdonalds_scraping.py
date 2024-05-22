@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 
 options = Options()
 # options.add_argument('--headless')
@@ -23,8 +22,10 @@ cardapio = navegador.find_element(By.CLASS_NAME, 'mcd-category-menu')
 # Usar um seletor CSS mais específico
 categorias = cardapio.find_elements(By.CSS_SELECTOR, '.column.is-narrow-mobile.is-narrow-tablet.is-12-desktop')
 
+ignorar_categoria = ['McLanche Feliz', 'McOferta', 'Méqui Box'] #adicione aqui as categorias que você quer ignorar
+
 for categoria in categorias:
-    if categoria.text == 'McLanche Feliz' or categoria.text == 'McOferta' or categoria.text == 'Méqui Box':
+    if categoria.text in ignorar_categoria:
         continue
     categoria.click()
     sleep(2)
