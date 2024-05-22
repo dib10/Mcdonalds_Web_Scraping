@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.webdriver.common.by import By
+################### CONFIGURANDO O SELENIUM ###################
 
 options = Options()
 # options.add_argument('--headless')
@@ -17,7 +18,10 @@ sleep(1)
 
 navegador.get('https://www.mcdonalds.com.br/cardapio/lancamentos')
 
-######## Navegando e clicando nas categorias do cardápio, obs: as categorias ficam num menu lateral esquerdo e não some ########
+
+################### CONFIGURANDO O SELENIUM ###################
+
+###################  Navegando e clicando nas categorias do cardápio, obs: as categorias ficam num menu lateral esquerdo e não some ################### 
 
 # Verifique se a classe 'mcd-category-menu' existe na página
 cardapio = navegador.find_element(By.CLASS_NAME, 'mcd-category-menu')
@@ -32,21 +36,30 @@ ignorar_categoria = ['McLanche Feliz', 'McOferta', 'Méqui Box'] #adicione aqui 
 #     categoria.click()
 #     sleep(2)
 
-### Após clicar nas categorias, devemos percorrer cada item e clicar nele ######
-# Verifique se a classe 'columns is-mobile is-multiline is-centered is-gapless' existe na página
+
+################### Navegando e clicando nas categorias do cardápio, obs: as categorias ficam num menu lateral esquerdo e não some ###################
+
+
+################### Após clicar nas categorias, devemos percorrer cada item e clicar nele ################
+
 
 div_dos_produtos = navegador.find_element(By.CLASS_NAME, 'columns.is-mobile.is-multiline.is-centered.is-gapless')
 
 # Obter a lista de produtos
 produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
 
-# Clicar em cada produto
+# Clicando em cada produto
 for i in range(len(produto_individual)):
     # Reobter a lista de produtos
     produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
     # Clicar no produto
     produto_individual[i].click()
     sleep(2)
+
+    # Obter o nome do produto
+    obter_nome_do_produto = navegador.find_element(By.CSS_SELECTOR, '.mcd-product-detail__summary h1').text
+    print(obter_nome_do_produto)  # Imprimir o nome do produto
+
     # Voltar para a página anterior
     navegador.back()
     sleep(2)
