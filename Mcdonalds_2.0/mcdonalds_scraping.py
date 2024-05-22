@@ -43,7 +43,7 @@ produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-det
 # Clicar em cada produto
 for i in range(len(produto_individual)):
     # Reobter a lista de produtos
-    produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.column.is-narrow a')
+    produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
     # Clicar no produto
     produto_individual[i].click()
     sleep(2)
