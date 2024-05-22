@@ -38,7 +38,7 @@ ignorar_categoria = ['McLanche Feliz', 'McOferta', 'Méqui Box'] #adicione aqui 
 div_dos_produtos = navegador.find_element(By.CLASS_NAME, 'columns.is-mobile.is-multiline.is-centered.is-gapless')
 
 # Obter a lista de produtos
-produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.column.is-narrow a')
+produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
 
 # Clicar em cada produto
 for i in range(len(produto_individual)):
@@ -71,11 +71,3 @@ for i in range(len(produto_individual)):
 # page_content = navegador.page_source
 # site = BeautifulSoup(page_content, 'html.parser')
 # print(site.prettify())
-
-
-
-
-
-
-
-
