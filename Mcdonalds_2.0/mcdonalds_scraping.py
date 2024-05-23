@@ -48,7 +48,7 @@ div_dos_produtos = navegador.find_element(By.CLASS_NAME, 'columns.is-mobile.is-m
 # Obter a lista de produtos
 produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
 
-# Clicando em cada produto
+# Clicando em cada produto e obtendo dados
 for i in range(len(produto_individual)):
     # Reobter a lista de produtos
     produto_individual = navegador.find_elements(By.CSS_SELECTOR, '.mcd-category-detail__item')
