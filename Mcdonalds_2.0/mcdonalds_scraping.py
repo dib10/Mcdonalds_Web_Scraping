@@ -55,28 +55,37 @@ for i in range(len(produto_individual)):
     # Clicar no produto
     produto_individual[i].click()
     sleep(2)
+    # Encontrar o local que clica para abrir as informações nutricionais 
 
     # Obter o nome do produto
     obter_nome_do_produto = navegador.find_element(By.CSS_SELECTOR, '.mcd-product-detail__summary h1').text
-    print(obter_nome_do_produto)  # Imprimir o nome do produto
-
+    
+    clicar_info_nutricional = navegador.find_element(By.CSS_SELECTOR, '.mcd-collapsable-item.mcd-collapsable-item--nutritional')
+    
+    # Clicando no botao de informações nutricionais
+    clicar_info_nutricional.click()
+    
+    sleep(2)
+    
+    # Obter as informações nutricionais
+    div_info_nutricional = navegador.find_element(By.CSS_SELECTOR, '.mcd-nutritional-information__summary')
+    
+    # Encontrar todas as tags <p> e <h3> dentro da div
+    info_nutricionais_nomes = [p.text for p in div_info_nutricional.find_elements(By.TAG_NAME, 'p')]
+    valores = [h3.text for h3 in div_info_nutricional.find_elements(By.TAG_NAME, 'h3')]
+    
+    # Criar um dicionário com as info_nutricionais_nomes e valores
+    info_nutricional = {info_nutricionais_nomes: valor for info_nutricionais_nomes, valor in zip(info_nutricionais_nomes, valores)}
+    
+    # Adicionar o nome do produto ao dicionário
+    info_nutricional['Produto'] = obter_nome_do_produto
+    
+    print(info_nutricional)
+    print('-----------------------------------')
+    
     # Voltar para a página anterior
     navegador.back()
     sleep(2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
