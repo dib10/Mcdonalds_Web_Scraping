@@ -1,19 +1,4 @@
-# Importações
-import requests
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from time import sleep
-import pandas as pd
-
-# Configurando o Selenium
-options = Options()
-options.add_argument('window-size=400,800')
-
-navegador = webdriver.Chrome(options=options)
-# Não altere o tempo de espera, pois o site pode crashar
-sleep(0.5)
+from config import *
 
 # Passando a URL do cardápio. Obs:. Você deve passar a url do primeiro elemento da categoria que aparece no cardápio, nesse caso, são os lançamentos.
 navegador.get('https://www.mcdonalds.com.br/cardapio/lancamentos')
@@ -66,7 +51,7 @@ while True: # Enquanto houver categorias para percorrer
         info_nutricionais_nomes = [p.text for p in div_info_nutricional.find_elements(By.TAG_NAME, 'p')]
         valores = [h3.text for h3 in div_info_nutricional.find_elements(By.TAG_NAME, 'h3')]
 
-        # Criando um dicionário com as informações nutricionais
+        # Criando um dicionário com as informações nutricionais e adicionando ao dataframe
         info_nutricional = {
             'Categoria': nome_categoria,
             'Produto': obter_nome_do_produto
@@ -75,9 +60,6 @@ while True: # Enquanto houver categorias para percorrer
             info_nutricional[nome] = valor
 
         df = pd.concat([df, pd.DataFrame([info_nutricional])], ignore_index=True)
-
-        # print(info_nutricional)
-        # print('-----------------------------------')
 
         navegador.back()
         # sleep(1)
