@@ -1,4 +1,4 @@
-# 🍔 Projeto de Web Scraping Automatizado do Cardápio Nutricional do McDonald's
+# 🍔 Web Scraping Automatizado do Cardápio Nutricional do McDonald's
 
 ## 📝 Descrição
 
