@@ -4,6 +4,12 @@
 
 Este projeto realiza o web scraping automatizado para extrair dados nutricionais do cardápio do McDonald's. Utilizando as bibliotecas Selenium e BeautifulSoup, os dados são coletados e transformados em uma planilha Excel. Posteriormente, esses dados são tratados e visualizados com as bibliotecas Pandas, Plotly e Streamlit.
 
+## 🌍 Endereço
+
+Acesse o site com dados nutricionais completos e gráficos interativos:
+https://mcdonalds-nutri.streamlit.app/
+
+
 ## 💻 Tecnologias Utilizadas
 
 - 🐍 **Python**: Linguagem de programação principal.
